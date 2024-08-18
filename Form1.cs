@@ -308,7 +308,9 @@ namespace WindowsFormsApp1
 		//MAK_DB_FINAL_lsit();
 
 		public void MAK_DB_FINAL_lsit()
-		{ 
+		{
+			Debug.WriteLine("[start]	MAK_DB_FINAL_lsit	");
+			Console.WriteLine("[start]	MAK_DB_FINAL_lsit	");
 			Queue<string> keywordQueue = new Queue<string>(); 
 			string relativeFolderPath = @"."; 
 			// XML 파일 경로를 저장할 리스트
@@ -324,14 +326,15 @@ namespace WindowsFormsApp1
 				foreach (var element_tag in doc.Descendants("tag"))
 				{
 					string string_buffer = CHANGE_DB_FROMFILEtag_use_lsit(element_tag.Value);
-					Debug.WriteLine("{0}->{1} from{2}", element_tag.Value, string_buffer, xmlFile);
-					Console.WriteLine("{0}->{1}  from{2}", element_tag.Value, string_buffer, xmlFile);
+					//Debug.WriteLine("{0}->{1} from{2}", element_tag.Value, string_buffer, xmlFile);
+					//Console.WriteLine("{0}->{1}  from{2}", element_tag.Value, string_buffer, xmlFile);
 					element_tag.Value = string_buffer;
 				}
 				doc.Save(xmlFile);
 				//end
 			}
-
+			Debug.WriteLine("[_end_]	MAK_DB_FINAL_lsit	");
+			Console.WriteLine("[_end_]	MAK_DB_FINAL_lsit	");
 		}  
 	} 
 
