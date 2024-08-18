@@ -1,0 +1,34 @@
+
+1. MAKE_FILEtag_use_lsit
+    prj\bin\Debug\2017\doc1.nfo
+    prj\bin\Debug\2017\doc2.nfo
+    prj\bin\Debug\2018\doc1.nfo
+    prj\bin\Debug\2018\doc2.nfo
+
+    위에서 사용되는 tag들을 
+    prj\bin\Debug\tag_use_lsit_s.xml에저장함
+
+
+2. GET_DB_FROMFILEtag_use_lsit
+
+    prj\bin\Debug\tag_use_lsit_s.xml을 exe의 DB에 저장함.
+
+    이 작업 이전에 user가 직접(메뉴얼로) 아래와같이 tag_use_lsit_s.xml을 변경해야함 
+      <tag>변경할내용</tag>   에서
+      <tag>변경할내용-변경한내용</tag>  로 
+
+      GET_DB_FROMFILEtag_use_lsit을 실행하면  
+
+        prj\bin\Debug\tag_use_lsit_s.xml을 읽어 변경할 내용 변경할내용 DB를 exe에 만듬 
+
+
+3. MAK_DB_FINAL_lsit
+
+GET_DB_FROMFILEtag_use_lsit의 DB를 사용하여 
+
+    prj\bin\Debug\2017\doc1.nfo
+    prj\bin\Debug\2017\doc2.nfo
+    prj\bin\Debug\2018\doc1.nfo
+    prj\bin\Debug\2018\doc2.nfo
+
+의 위 파일의 tag들을 일괄 변경함 
