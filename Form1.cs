@@ -84,6 +84,8 @@ namespace WindowsFormsApp1
 		public void MAKE_FILEtag_use_lsit()
 		{
 
+			Debug.WriteLine("[start]	MAKE_FILEtag_use_lsit	");
+			Console.WriteLine("[start]	MAKE_FILEtag_use_lsit	");
 			Queue<string> keywordQueue = new Queue<string>();
 			// 현재 실행 중인 프로그램의 디렉토리를 기준으로 상대 경로 설정
 			//string relativeFolderPath = @"..\..\";
@@ -187,9 +189,10 @@ namespace WindowsFormsApp1
 			//		// 추가 작업 수행 가능
 			//	}
 			//}
- 
 
 
+			Debug.WriteLine("[_end_]	MAKE_FILEtag_use_lsit	");
+			Console.WriteLine("[_end_]	MAKE_FILEtag_use_lsit	");
 		}
 
 		public class C_keywordQueue
@@ -216,8 +219,9 @@ namespace WindowsFormsApp1
 		Queue<C_keywordQueue> g_keywordQueue = new Queue<C_keywordQueue>();
 		public void GET_DB_FROMFILEtag_use_lsit()
 		{
-
-			 string saveas;   
+			Debug.WriteLine("[start]	GET_DB_FROMFILEtag_use_lsit	");
+			Console.WriteLine("[start]	GET_DB_FROMFILEtag_use_lsit	");
+			string saveas;   
 			saveas = "tag_use_lsit" + "_s" + ".xml";
  
 			g_keywordQueue.Clear();
@@ -269,6 +273,10 @@ namespace WindowsFormsApp1
 				}
 
 			}
+
+
+			Debug.WriteLine("[_end_]	GET_DB_FROMFILEtag_use_lsit	");
+			Console.WriteLine("[_end_]	GET_DB_FROMFILEtag_use_lsit	");
 		}
 
 
