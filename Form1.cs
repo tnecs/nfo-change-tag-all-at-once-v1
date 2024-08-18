@@ -220,8 +220,12 @@ namespace WindowsFormsApp1
 			 string saveas;   
 			saveas = "tag_use_lsit" + "_s" + ".xml";
  
-			g_keywordQueue.Clear();  
-
+			g_keywordQueue.Clear();
+			if (!File.Exists(saveas))	{
+				Debug.WriteLine($"{saveas}file을 찾을수 없습니다. .");
+				Console.WriteLine($"{saveas}file을 찾을수 없습니다. .");
+				return;
+			}		
 			XDocument doc = XDocument.Load(saveas);
 			// 특정 태그 변경 (예: name 태그의 값을 변경) 
 
