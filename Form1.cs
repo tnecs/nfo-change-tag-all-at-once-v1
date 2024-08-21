@@ -130,6 +130,9 @@ namespace WindowsFormsApp1
 					bool exists = keywordQueue.Contains(s_element_tag);//que에있는가?
 					if (!exists)
 					{
+
+						Debug.WriteLine("{0} tag 입니다. .", element_tag);
+						Console.WriteLine("{0} tag 입니다. .", element_tag);
 						keywordQueue.Enqueue(s_element_tag);//q item이 추가
 					}
 					//Debug.WriteLine($"{xmlFile}이(가) 성공적으로 변경되었습니다.");
