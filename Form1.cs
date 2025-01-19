@@ -246,9 +246,10 @@ namespace WindowsFormsApp1
 				//string s_element_tag = element_tag.ToString();
 				string s_element_tag = element_tag.Value.ToString();
 				//s_element_tag  = "ABC->ㄱㄴㄷ"
-				string[] parts =   s_element_tag.Split('-');
+				//string[] parts =   s_element_tag.Split('-');
+                string[] parts = s_element_tag.Split(':');
 
-				if (g_keywordQueue.Count==0){
+                if (g_keywordQueue.Count==0){
 					if (parts.Count() == 2)
 					{ 
 						g_keywordQueue.Enqueue(new C_keywordQueue(parts[0], parts[1]));
