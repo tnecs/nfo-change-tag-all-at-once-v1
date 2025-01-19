@@ -201,13 +201,13 @@ namespace WindowsFormsApp1
 		public class C_keywordQueue
 		{
 			public string org_string { get; set; }
-			public string change_string { get; set; }
+			public string change_string { get; set; } 
 
- 
-			public C_keywordQueue(string org_string2, string change_string2)
+
+            public C_keywordQueue(string org_string2, string change_string2)
 			{
 				org_string = org_string2;
-				change_string = change_string2;
+				change_string = change_string2; 
 			}
 			public override string ToString()
 			{
@@ -347,7 +347,104 @@ namespace WindowsFormsApp1
 			}
 			Debug.WriteLine("[_end_]	MAK_DB_FINAL_lsit	");
 			Console.WriteLine("[_end_]	MAK_DB_FINAL_lsit	");
-		}  
-	} 
+		}
+
+        //GET_DB_SameLine는 
+        //tag_use_lsit_s.xml을 읽어서 g_keywordQueue.org_string 에 저장하고 
+        //tag_use_lsit_s - Dic.xml을 읽어서 g_keywordQueue.change_string 에 저장하는 함수이다. 
+        //
+        private void GET_DB_SameLine(object sender, EventArgs e)
+        { 
+            Debug.WriteLine("[start]	GET_DB_SameLine	");
+            Console.WriteLine("[start]	GET_DB_SameLine	");
+
+            //c# string queue sample
+
+
+
+
+            string saveas  = "tag_use_lsit_s.xml";
+            g_keywordQueue.Clear();
+            if (!File.Exists(saveas))
+            {
+                Debug.WriteLine($"{saveas}file을 찾을수 없습니다. .");
+                Console.WriteLine($"{saveas}file을 찾을수 없습니다. .");
+                return;
+            }
+            XDocument doc = XDocument.Load(saveas);
+            Queue<string> data1 = new Queue<string>(); 
+            foreach (var element_tag in doc.Descendants("tag"))
+			{
+                //data1에 element_tag.Value.ToString()을 enqueue한다.
+				data1.Enqueue(element_tag.Value.ToString());  
+            }
+
+
+
+
+
+			string saveas2 = "tag_use_lsit_s - Dic.xml";
+            g_keywordQueue.Clear();
+            if (!File.Exists(saveas2))
+            {
+                Debug.WriteLine($"{saveas2}file을 찾을수 없습니다. .");
+                Console.WriteLine($"{saveas2}file을 찾을수 없습니다. .");
+                return;
+            }
+            XDocument doc2 = XDocument.Load(saveas2);
+			Queue<string> data2 = new Queue<string>();
+            foreach (var element_tag in doc2.Descendants("tag"))
+            {
+                //data2에 element_tag.Value.ToString()을 enqueue한다.
+                data2.Enqueue(element_tag.Value.ToString());
+            }
+
+
+
+            //////////////////////
+            ///data1 와 data2 의 length가 같은지 확인한다.
+			if(data1.Count != data2.Count)
+			{
+                Debug.WriteLine($"data1.Count != data2.Count");
+                Console.WriteLine($"data1.Count != data2.Count");
+                return;
+            }
+
+            //data1 개수가 0이면 return
+            if (data1.Count == 0|| data1.Count == 1|| data2.Count == 0|| data2.Count == 1)
+			{
+				Debug.WriteLine($"data1.Count == 0 , 1"); 
+                Console.WriteLine($"data1.Count == 0 , 1");
+				return;
+			}
+
+            Debug.WriteLine("count:{0}			: {1}", data1.Count, data2.Count);
+            Console.WriteLine("count:{0}			: {1}", data1.Count, data2.Count);
+            Debug.WriteLine("{0}			: {1}", saveas, saveas2);
+            Console.WriteLine("{0}			: {1}", saveas, saveas2);
+
+			int i_max = data1.Count;
+            for (int i = 0; i < i_max; i++)
+			{
+                //data1의 값과 C_keywordQueue.org_string에 저장한다.
+                //data2의 값과 C_keywordQueue.change_string에 저장한다. 
+                string s_element_tag = data1.Dequeue();
+                string s_element_tag2 = data2.Dequeue();  
+                g_keywordQueue.Enqueue(new C_keywordQueue(s_element_tag, s_element_tag2));
+
+                //위 처리내용을 Console.WriteLine으로 출력한다.
+                Console.WriteLine("{2}	{0}			: {1}", s_element_tag, s_element_tag2,i);
+                Debug.WriteLine("{2}	{0}			: {1}", s_element_tag, s_element_tag2,i);
+            }
+			
+
+
+
+
+
+            Debug.WriteLine("[_end_]	GET_DB_SameLine	");
+            Console.WriteLine("[_end_]	GET_DB_SameLine	");
+        }
+    } 
 
 }
